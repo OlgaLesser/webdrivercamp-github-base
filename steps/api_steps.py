@@ -1,7 +1,7 @@
 from behave import *
-from components.client_api import ClientAPI
-from components.payload_api import PayloadAPI
-from components.response_api import ResponseAPI
+from base.components.client_api import ClientAPI
+from base.components.payload_api import PayloadAPI
+from base.components.response_api import ResponseAPI
 import json
 
 
