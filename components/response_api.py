@@ -19,6 +19,14 @@ class ResponseAPI:
                                                                      f"to contain '{expected_value}'")
 
     def verify_equals(self, jsonpath, expected_value):
-        parsed = jp.parse(self.data)
-        result = parsed.search(jsonpath)
-        assert result[0] == expected_value, f"JSONPath '{jsonpath}' value mismatch: Expected {expected_value}, Actual {result[0]}"
+        json_object = self.data.json()
+        result = json_object[jsonpath]
+        assert result == expected_value, f"JSONPath '{jsonpath}' value mismatch: Expected {expected_value}, Actual {result}"
+
+    def get_values_by_jsonpath(self, jsonpath):
+        json_object = self.data.json()
+        return json_object[jsonpath]
+
+    def get_items_count(self):
+        json_object = self.data.json()
+        return len(json_object)
